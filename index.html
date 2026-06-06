@@ -58,7 +58,7 @@
             z-index: 2;
         }
 
-        /* SFONDO ROSSO SFUMATO */
+        /* SFONDO ROSSO SFUMATO (SULLE SLIDE SCURE) */
         .slide::before {
             content: ''; position: absolute; top: -150px; right: -150px; width: 450px; height: 450px;
             background: radial-gradient(circle, rgba(204, 0, 0, 0.12) 0%, transparent 70%);
@@ -97,7 +97,7 @@
         .slide-quote-clean {
             position: relative;
             padding-left: 45px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .slide-quote-clean::before {
             content: '“';
@@ -110,12 +110,12 @@
             opacity: 0.7;
         }
         .slide-quote-text {
-            font-size: 35px;
+            font-size: 34px;
             font-style: italic;
             color: #ffffff;
             line-height: 1.3;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .slide-quote-author {
             font-size: 20px;
@@ -125,7 +125,7 @@
             display: block;
         }
 
-        /* CONTENITORI IMMAGINI STORICHE */
+        /* CONTENITORI IMMAGINI STORICHE ORIGINALI */
         .historical-image-container {
             width: 100%;
             height: 440px;
@@ -272,7 +272,7 @@
         <p style="font-family: 'Space Mono', monospace; letter-spacing: 5px; margin-top: 20px; color: #666; font-size: 16px;">UN SECOLO DI POTERE, SCIENZA E ARTE</p>
     </div>
 
-    <!-- SLIDE 2: LA TUA MAPPA CONCETTUALE ORIGINALE -->
+    <!-- SLIDE 2: LA TUA MAPPA CONCETTUALE ORIGINALE (BIANCA) -->
     <div class="slide map-slide" id="slide2">
         <div class="content-area">
             <div class="map-container">
@@ -329,12 +329,13 @@
                         <p class="slide-quote-text">"La pianificazione economica statale ha trasformato l'URSS."</p>
                         <span class="slide-quote-author">— I Piani Quinquennali</span>
                     </div>
-                    <p class="music-desc-clean" style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
+                    <p style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
                         Dopo la Rivoluzione del 1917, l'URSS visse un'industrializzazione forzata sotto Stalin. La crescita produttiva colossale fu pagata con la totale sottomissione dei diritti individuali.
                     </p>
                 </div>
+                <!-- VERA FOTO STORICA: INDUSTRIALIZZAZIONE (MAGNITOGORSK 1932) -->
                 <div class="historical-image-container">
-                    <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=600" alt="Industrial soviet style factory">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Magnitogorsk_1932.jpg/640px-Magnitogorsk_1932.jpg" alt="Industrializzazione Sovietica 1932">
                 </div>
             </div>
         </div>
@@ -356,12 +357,13 @@
                             <div class="bar-outer"><div class="bar-fill" style="width: 70%;">Infrastrutture siberiane</div></div>
                         </div>
                     </div>
-                    <p class="music-desc-clean" style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
+                    <p style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
                         Le grandi reti energetiche e di trivellazione furono create in epoca sovietica sfidando le condizioni estreme del <strong>Permafrost siberiano</strong>, gettando le basi della moderna economia russa.
                     </p>
                 </div>
+                <!-- VERA FOTO STORICA: TRIVELLAZIONE ED ESTRAZIONE SIBERIANA -->
                 <div class="historical-image-container">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600" alt="Siberia industrial gas rig">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Stroitelstvo_gazoprovoda.jpg/640px-Stroitelstvo_gazoprovoda.jpg" alt="Trivellazione Gasdotto Siberia">
                 </div>
             </div>
         </div>
@@ -377,33 +379,35 @@
                         <p class="slide-quote-text">"La genetica classica e lo studio del DNA sono scienza borghese."</p>
                         <span class="slide-quote-author">— Trofim Lysenko</span>
                     </div>
-                    <p class="music-desc-clean" style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
+                    <p style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
                         L'agronomo sovietico Lysenko rigettò la genetica di Mendel, promettendo raccolti miracolosi nel gelo siberiano. Chi difendeva il metodo scientifico fu arrestato o deportato, provocando gravissime carestie agricole.
                     </p>
                 </div>
+                <!-- VERA FOTO STORICA DI TROFIM LYSENKO NEI CAMPI -->
                 <div class="historical-image-container">
-                    <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?q=80&w=600" alt="Historical science laboratory">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Trofim_Lysenko_portrait.jpg/480px-Trofim_Lysenko_portrait.jpg" alt="Trofim Lysenko">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 6: MUSICA -->
+    <!-- SLIDE 6: MUSICA (RESTORED ED ESATTAMENTE COME IL TUO SCREENSHOT!) -->
     <div class="slide" id="slide6">
         <h2 class="slide-title" style="border-left: 5px solid #cc0000; padding-left: 15px;">4. MUSICA: DMITRIJ ŠOSTAKOVIČ</h2>
         <div class="content-area">
-            <div class="music-layout-clean">
-                <div class="music-left">
-                    <div class="music-quote-clean">
-                        <p class="music-quote-text">"La mia musica è un monumento alle vittime del regime e della guerra."</p>
-                        <span class="music-quote-author">— Dmitrij Šostakovič</span>
+            <div class="two-column-clean">
+                <div class="left-content-clean">
+                    <div class="slide-quote-clean">
+                        <p class="slide-quote-text">"La mia musica è un monumento alle vittime del regime e della guerra."</p>
+                        <span class="slide-quote-author">— Dmitrij Šostakovič</span>
                     </div>
-                    <p class="music-desc-clean">
+                    <p style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
                         La sua <strong>Settima Sinfonia "Leningrado"</strong> divenne il simbolo della resistenza contro l'invasione nazista, ma la sua vita fu un equilibrio costante tra genio artistico e censura staliniana.
                     </p>
                 </div>
-                <div class="music-image-container">
-                    <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=600" alt="Classical piano and sheet music">
+                <!-- RITRATTO REALE E STORICO DI ŠOSTAKOVIČ SULLA DESTRA -->
+                <div class="historical-image-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Dmitri_Shostakovich.jpg/480px-Dmitri_Shostakovich.jpg" alt="Dmitri Shostakovich">
                 </div>
             </div>
         </div>
@@ -419,12 +423,13 @@
                         <p class="slide-quote-text">"L'URSS inviò i caccia Mosca I-16 a difesa della Repubblica."</p>
                         <span class="slide-quote-author">— L'intervento militare sovietico</span>
                     </div>
-                    <p class="music-desc-clean" style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
+                    <p style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
                         L'Unione Sovietica sostenne attivamente i Repubblicani inviando armi e velivoli storici come il caccia <strong>Polikarpov I-16 "Mosca"</strong>, scontrandosi con le forze fasciste in una prova generale della Seconda Guerra Mondiale.
                     </p>
                 </div>
+                <!-- FOTO STORICA REALE DEL CACCIA SOVIETICO I-16 IN SPAGNA -->
                 <div class="historical-image-container">
-                    <img src="https://images.unsplash.com/photo-1473163928189-364b2c4e1135?q=80&w=600" alt="Historical airplane military caccia">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Polikarpov_I-16_Republic.jpg/640px-Polikarpov_I-16_Republic.jpg" alt="Caccia sovietico Polikarpov I-16">
                 </div>
             </div>
         </div>
@@ -437,15 +442,16 @@
             <div class="two-column-clean">
                 <div class="left-content-clean">
                     <div class="slide-quote-clean">
-                        <p class="slide-quote-text">"La pittura non è fatta per decorare appartamenti. È uno strumento di guerra."</p>
+                        <p class="slide-quote-text">"La pittura non è fatta per decorate appartamenti. È uno strumento di guerra."</p>
                         <span class="slide-quote-author">— Pablo Picasso</span>
                     </div>
-                    <p class="music-desc-clean" style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
+                    <p style="font-size: 19px; line-height: 1.4; color: #b3b3b3;">
                         Il capolavoro monocromatico di Picasso urla il terrore del bombardamento aereo tedesco su Guernica. L'assenza di colore trasforma la polvere e la sofferenza civile in un manifesto pacifista globale.
                     </p>
                 </div>
+                <!-- FOTO REALE DEL MURALES STORICO DI GUERNICA DI PICASSO -->
                 <div class="historical-image-container">
-                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=600" alt="Abstract painting art cubismo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Mural_del_Gernika.jpg/800px-Mural_del_Gernika.jpg" alt="Guernica di Picasso">
                 </div>
             </div>
         </div>
