@@ -58,7 +58,7 @@
             z-index: 2;
         }
 
-        /* SFONDO ROSSO SFUMATO */
+        /* SFONDO ROSSO SFUMATO (SULLE SLIDE SCURE) */
         .slide::before {
             content: ''; position: absolute; top: -150px; right: -150px; width: 450px; height: 450px;
             background: radial-gradient(circle, rgba(204, 0, 0, 0.12) 0%, transparent 70%);
@@ -100,7 +100,19 @@
         .list-styled li { margin-bottom: 22px; display: flex; align-items: flex-start; gap: 15px; }
         .list-styled i { color: #cc0000; font-size: 18px; margin-top: 6px; }
 
-        /* REPLICA IDENTICA DELLA TUA MAPPA CONCETTUALE */
+        /* ==========================================
+           SLIDE 2: MAPPA CONCETTUALE ORIGINALE (BIANCA)
+           ========================================== */
+        .map-slide {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+        .map-slide::before {
+            display: none; /* Rimuove bagliore rosso sullo sfondo bianco */
+        }
+        .map-slide .slide-counter {
+            color: #666666 !important;
+        }
         .map-container {
             display: grid;
             grid-template-columns: 240px 90px 1fr;
@@ -112,10 +124,9 @@
             font-size: 26px;
             font-weight: 900;
             text-transform: uppercase;
-            color: #ffffff;
+            color: #111111;
             line-height: 1.2;
-            text-align: right;
-            padding-right: 10px;
+            text-align: center;
         }
         .map-center-svg {
             display: flex;
@@ -134,7 +145,7 @@
             gap: 20px;
         }
         
-        /* Stile dei tuoi pulsanti arrotondati (Pills) della foto */
+        /* Stile pills bianche con bordo colorato */
         .map-pill {
             width: 180px;
             padding: 8px 12px;
@@ -146,53 +157,91 @@
             font-size: 16px;
             text-transform: uppercase;
             background: #ffffff;
-            color: #000000;
+            color: #111111;
             flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .pill-urss { border-color: #ec5d7d; }
         .pill-tecno { border-color: #7d8495; }
         .pill-scienze { border-color: #5bb3cc; }
-        .pill-musica { border-color: #29b6f6; } /* Inserito nel quarto slot azzurro */
+        .pill-musica { border-color: #29b6f6; } /* Slot azzurro della musica */
         .pill-guerra { border-color: #4a6fa5; }
         .pill-guernica { border-color: #3b3c6e; }
 
         .map-desc {
             font-size: 17px;
-            color: #b0b0b0;
+            color: #444444;
             line-height: 1.3;
+            font-weight: 600;
         }
 
-        /* SLIDE MUSICA - DRAMMATICA E AD ALTO IMPATTO */
-        .music-layout {
+        /* ==========================================
+           SLIDE 6: MUSICA (DESIGN ORIGINALE CLEAN)
+           ========================================== */
+        .music-layout-clean {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 50px;
             align-items: center;
             width: 100%;
         }
-        .music-quote-box {
-            background: linear-gradient(135deg, #1f0303 0%, #141414 100%);
-            border-left: 8px solid #cc0000;
-            padding: 45px;
-            border-radius: 4px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        .music-left {
+            display: flex;
+            flex-direction: column;
         }
-        .music-quote-box blockquote {
-            font-size: 38px;
+        .music-quote-clean {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 25px;
+        }
+        .music-quote-clean::before {
+            content: '“';
+            position: absolute;
+            left: 0;
+            top: -20px;
+            font-size: 90px;
+            color: #cc0000;
+            font-family: serif;
+            opacity: 0.7;
+        }
+        .music-quote-text {
+            font-size: 36px;
             font-style: italic;
             color: #ffffff;
-            line-height: 1.25;
-            margin-bottom: 25px;
-            font-weight: 900;
+            line-height: 1.3;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
-        .music-quote-box cite {
-            font-family: 'Space Mono', monospace;
+        .music-quote-author {
+            font-size: 20px;
             color: #cc0000;
-            font-size: 18px;
-            font-style: normal;
+            font-family: 'Space Mono', monospace;
             font-weight: bold;
             display: block;
+        }
+        .music-desc-clean {
+            font-size: 19px;
+            line-height: 1.4;
+            color: #b3b3b3;
+            margin-top: 15px;
+        }
+        .music-desc-clean strong {
+            color: #cc0000;
+            border: none;
+        }
+        .music-image-container {
+            width: 100%;
+            height: 440px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            border: 1px solid #333;
+        }
+        .music-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
         }
 
         /* CONTROLLI E FRECCE IN BASSO */
@@ -205,6 +254,12 @@
             font-size: 16px; transition: all 0.2s ease;
         }
         .nav-btn:hover { background: #cc0000; border-color: #cc0000; transform: translateY(-2px); }
+        .map-slide .nav-btn {
+            background: #f0f0f0; border: 1px solid #ccc; color: #111;
+        }
+        .map-slide .nav-btn:hover {
+            background: #cc0000; border-color: #cc0000; color: #fff;
+        }
         
         .slide-counter {
             position: absolute; bottom: 42px; left: 40px; font-family: 'Space Mono', monospace;
@@ -239,15 +294,15 @@
         <p style="margin-top: 50px; font-size: 18px; color: #444;">Esame di Terza Media | 2024</p>
     </div>
 
-    <!-- SLIDE 2: LA TUA MAPPA CONCETTUALE ORIGINALE (CON MUSICA INSERITA) -->
-    <div class="slide" id="slide2">
+    <!-- SLIDE 2: LA TUA MAPPA CONCETTUALE ORIGINALE (SFONDO BIANCO) -->
+    <div class="slide map-slide" id="slide2">
         <div class="content-area">
             <div class="map-container">
                 <div class="map-left-title">
                     Perché ho<br>scelto questo<br>argomento?
                 </div>
                 
-                <!-- FRECCIA CURVA IN SVG ESATTAMENTE COME LA TUA -->
+                <!-- FRECCIA CURVA IN SVG -->
                 <div class="map-center-svg">
                     <svg width="70" height="480" viewBox="0 0 70 480" fill="none">
                         <path d="M 15,30 Q 75,240 15,450" stroke="#ec5d7d" stroke-width="4" stroke-dasharray="6,6" fill="none" />
@@ -257,7 +312,7 @@
                     </svg>
                 </div>
                 
-                <!-- ELENCO PILLS IDENTICHE AI TUOI DISEGNI DELLA FOTO -->
+                <!-- ELENCO PILLS IDENTICHE AI TUOI DISEGNI -->
                 <div class="map-right-list">
                     <div class="map-row">
                         <div class="map-pill pill-urss">1. LA URSS</div>
@@ -271,7 +326,7 @@
                         <div class="map-pill pill-scienze">Scienze</div>
                         <div class="map-desc">Gli studi sovietici sul DNA e lo scontro con l'ideologia.</div>
                     </div>
-                    <!-- SLOT PRECEDENTEMENTE VUOTO -> ORA RIEMPITO CON MUSICA -->
+                    <!-- SLOT PRECEDENTEMENTE VUOTO -> RIEMPITO CON MUSICA (AZZURRO) -->
                     <div class="map-row">
                         <div class="map-pill pill-musica">Musica</div>
                         <div class="map-desc">Dmitrij Šostakovič: comporre sotto il regime e la musica come ribellione segreta.</div>
@@ -370,20 +425,23 @@
         </div>
     </div>
 
-    <!-- SLIDE 6: MUSICA (RESTORED TO ORIGINAL SPECTACULAR DESIGN) -->
+    <!-- SLIDE 6: MUSICA (DESIGN ORIGINALE CLEAN CON FOTO STORICA) -->
     <div class="slide" id="slide6">
-        <h2 class="slide-title">Musica: Dmitrij Šostakovič</h2>
+        <h2 class="slide-title" style="border-left: 5px solid #cc0000; padding-left: 15px;">4. MUSICA: DMITRIJ ŠOSTAKOVIČ</h2>
         <div class="content-area">
-            <div class="music-layout">
-                <div class="music-quote-box">
-                    <blockquote>"La mia musica è una lapide per tutte le persone morte nel nostro regime."</blockquote>
-                    <cite>— DMITRIJ ŠOSTAKOVIČ</cite>
+            <div class="music-layout-clean">
+                <div class="music-left">
+                    <div class="music-quote-clean">
+                        <p class="music-quote-text">"La mia musica è un monumento alle vittime del regime e della guerra."</p>
+                        <span class="music-quote-author">— Dmitrij Šostakovič</span>
+                    </div>
+                    <p class="music-desc-clean">
+                        La sua <strong>Settima Sinfonia "Leningrado"</strong> divenne il simbolo della resistenza contro l'invasione nazista, ma la sua vita foi un equilibrio costante tra genio artistico e censura staliniana.
+                    </p>
                 </div>
-                <div>
-                    <ul class="list-styled">
-                        <li><i class="fa-solid fa-music"></i> <strong>La valigia pronta:</strong> Viveva nel panico di essere arrestato di notte dalla polizia di Stalin.</li>
-                        <li><i class="fa-solid fa-masks-theater"></i> <strong>La sinfonia segreta:</strong> Sotto canzoni apparentemente allegre e patriottiche nascondeva i pianti e le urla del popolo sottomesso.</li>
-                    </ul>
+                <!-- FOTO DI ŠOSTAKOVIČ STORICA DA COMMONS WIKIPEDIA -->
+                <div class="music-image-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Dmitri_Shostakovich.jpg" alt="Dmitri Shostakovich portrait">
                 </div>
             </div>
         </div>
@@ -464,7 +522,7 @@
         </div>
     </div>
 
-    <!-- SLIDE 10: FINE (NO DOMANDE, GRAZIE CON IMPATTO) -->
+    <!-- SLIDE 10: FINE -->
     <div class="slide" id="slide10" style="background: linear-gradient(135deg, #cc0000 0%, #600000 100%); color: #fff; justify-content: center; text-align: center;">
         <h1 style="font-size: 85px; text-shadow: 0 10px 30px rgba(0,0,0,0.5); line-height: 1.1;">GRAZIE PER L'ATTENZIONE</h1>
         <p style="font-family: 'Space Mono', monospace; font-size: 20px; letter-spacing: 5px; margin-top: 30px; color: rgba(255,255,255,0.7);">FINE DELLA PRESENTAZIONE</p>
@@ -500,7 +558,6 @@
         }
     }
 
-    // Navigazione indietro
     function prevSlide() {
         if (currentSlideIndex > 0) {
             currentSlideIndex--;
@@ -508,11 +565,11 @@
         }
     }
 
-    // Eventi pulsanti
+    // Bottoni click
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
 
-    // Gestione tasti freccia e spazio
+    // Tastiera frecce + barra spaziatrice
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight' || e.key === ' ') {
             nextSlide();
@@ -521,7 +578,7 @@
         }
     });
 
-    // AUTO-SCALING DINAMICO (Mantiene la presentazione proporzionata in 16:9 su ogni monitor)
+    // AUTO-SCALING DINAMICO PER NON SCONFIGURARE MAI IL 16:9
     function resizePresentation() {
         const wrapper = document.querySelector('.presentation-wrapper');
         const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
@@ -530,7 +587,7 @@
     window.addEventListener('resize', resizePresentation);
     window.addEventListener('load', resizePresentation);
 
-    // Inizializzazione iniziale
+    // Inizializza subito
     updatePresentation();
     resizePresentation();
 </script>
