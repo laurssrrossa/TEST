@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;900&family=Space+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* RESET E STRUTTURA FLUIDA RESPONSIVE */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             background-color: #0d0d0d; 
@@ -20,36 +19,31 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         
-        /* CONTENITORE PRESENTAZIONE (RISOLVE IL BUG DEL TAGLIO SCHERMO) */
+        /* PRESENTAZIONE A TUTTO SCHERMO (Risolve il problema del "diventato piccolo") */
         .presentation-wrapper {
             position: relative;
-            width: 100%;
-            max-width: 1200px;
-            aspect-ratio: 16 / 9;
+            width: 100vw;
+            height: 100vh;
             background-color: #111111;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
-            border: 1px solid #222;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border-radius: 8px;
         }
 
-        /* STRUTTURA SLIDE */
         .slide {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            padding: 4% 6%;
+            padding: 6vh 8vw;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.2s ease-in-out;
             background-color: #111111;
             z-index: 1;
         }
@@ -60,42 +54,44 @@
             z-index: 2;
         }
 
-        /* SFONDO ROSSO RADIALE SFUMATO */
         .slide::before {
             content: ''; position: absolute; top: -20%; right: -10%; width: 40%; height: 75%;
-            background: radial-gradient(circle, rgba(204, 0, 0, 0.12) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(204, 0, 0, 0.1) 0%, transparent 70%);
             z-index: 0;
             pointer-events: none;
         }
         .slide > * { position: relative; z-index: 2; }
 
-        /* TESTI ADATTIVI AL MONITOR */
         h1, h2, h3 { font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
-        h1 { font-size: clamp(32px, 6vw, 70px); line-height: 1; text-align: center; color: #ffffff; }
+        h1 { font-size: clamp(38px, 6vw, 80px); line-height: 1.1; text-align: center; color: #ffffff; }
         h1 span { color: #cc0000; }
         
         .slide-title { 
-            font-size: clamp(22px, 3vw, 36px); 
+            font-size: clamp(24px, 3.5vw, 42px); 
             color: #cc0000; 
-            margin-bottom: 3%; 
+            margin-bottom: 3vh; 
             border-left: 6px solid #cc0000; 
             padding-left: 15px; 
             text-transform: uppercase;
             line-height: 1.1;
         }
-        p, li { font-size: clamp(14px, 1.8vw, 20px); line-height: 1.4; color: #cccccc; }
+        p, li { font-size: clamp(15px, 1.8vw, 22px); line-height: 1.5; color: #cccccc; }
         strong { color: #ffffff; }
 
-        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
-
-        /* STRUTTURA A COLONNE PULITA */
-        .two-column-clean { 
-            display: grid; 
-            grid-template-columns: 1.15fr 0.85fr; 
-            gap: 5%; 
+        .content-area { 
+            flex-grow: 1; 
+            display: flex; 
             align-items: center; 
             width: 100%; 
-            height: 100%;
+            height: 75vh;
+        }
+
+        .two-column-clean { 
+            display: grid; 
+            grid-template-columns: 1.1fr 0.9fr; 
+            gap: 6%; 
+            align-items: center; 
+            width: 100%;
         }
 
         .left-content-clean {
@@ -107,7 +103,7 @@
         .slide-quote-clean {
             position: relative;
             padding-left: 35px;
-            margin-bottom: 4%;
+            margin-bottom: 3vh;
         }
         .slide-quote-clean::before {
             content: '“';
@@ -120,112 +116,79 @@
             opacity: 0.7;
         }
         .slide-quote-text {
-            font-size: clamp(18px, 2.5vw, 32px);
+            font-size: clamp(18px, 2.3vw, 28px);
             font-style: italic;
             color: #ffffff;
-            line-height: 1.3;
+            line-height: 1.4;
             font-weight: 700;
-            margin-bottom: 2%;
+            margin-bottom: 1vh;
         }
         .slide-quote-author {
-            font-size: clamp(12px, 1.5vw, 18px);
+            font-size: clamp(12px, 1.4vw, 18px);
             color: #cc0000;
             font-family: 'Space Mono', monospace;
             font-weight: bold;
             display: block;
         }
 
-        /* BOX IMMAGINI PERFETTAMENTE PROPORZIONATO */
+        /* STRUTTURA IMMAGINE CORRETTA (Risolve il bug del taglio verticale) */
         .historical-image-container {
             width: 100%;
-            height: 100%;
-            max-height: 380px;
+            height: 45vh; /* Altezza dinamica rispetto allo schermo */
+            max-height: 450px;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             border: 1px solid #333;
             background-color: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .historical-image-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center;
+            object-fit: contain; /* Mostra l'intera immagine senza MAI tagliarla */
+            background-color: #111111;
             display: block;
         }
-        .historical-image-container i {
-            font-size: clamp(30px, 5vw, 50px);
-            color: #333;
+        .historical-image-container.contain-fill img {
+            object-fit: cover; /* Mantiene la copertura fluida per i wallpaper */
         }
-
-        /* LISTE */
-        .list-styled { list-style: none; }
-        .list-styled li { margin-bottom: 3%; display: flex; align-items: flex-start; gap: 12px; }
-        .list-styled i { color: #cc0000; font-size: clamp(12px, 1.5vw, 16px); margin-top: 5px; }
-
-        /* ==========================================
-           SLIDE 2: MAPPA CONCETTUALE ORIGINALE (BIANCA)
-           ========================================== */
-        .map-slide {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-        }
-        .map-slide::before {
-            display: none;
-        }
-        .map-slide .slide-counter {
-            color: #666666 !important;
-        }
-        .map-container {
-            display: grid;
-            grid-template-columns: 20% 10% 70%;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-        }
-        .map-left-title {
-            font-size: clamp(14px, 2.2vw, 24px);
-            font-weight: 900;
-            text-transform: uppercase;
-            color: #111111;
-            line-height: 1.2;
-            text-align: center;
-        }
-        .map-center-svg {
+        .historical-image-container-icon {
             display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            height: 100%;
         }
-        .map-right-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5%;
+        .historical-image-container i {
+            font-size: clamp(40px, 6vw, 70px);
+            color: #444;
         }
-        .map-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+
+        .list-styled { list-style: none; }
+        .list-styled li { margin-bottom: 4vh; display: flex; align-items: flex-start; gap: 15px; }
+        .list-styled i { color: #cc0000; font-size: clamp(14px, 1.6vw, 20px); margin-top: 6px; }
+
+        /* SLIDE MAPPA */
+        .map-slide { background-color: #ffffff !important; color: #000000 !important; }
+        .map-slide::before { display: none; }
+        .map-slide .slide-counter { color: #666666 !important; }
+        .map-container { display: grid; grid-template-columns: 20% 8% 72%; align-items: center; width: 100%; height: 100%; }
+        .map-left-title { font-size: clamp(16px, 2.4vw, 28px); font-weight: 900; text-transform: uppercase; color: #111111; line-height: 1.2; text-align: center; }
+        .map-center-svg { display: flex; justify-content: center; align-items: center; height: 100%; }
+        .map-right-list { display: flex; flex-direction: column; gap: 2.5vh; }
+        .map-row { display: flex; align-items: center; gap: 20px; }
         
-        /* Pills arrotondate con bordo colorato esatto */
         .map-pill {
-            width: clamp(120px, 15vw, 180px);
-            padding: 6px 10px;
+            width: clamp(130px, 16vw, 200px);
+            padding: 8px 12px;
             border-radius: 20px;
             border-width: 3px;
             border-style: solid;
             text-align: center;
             font-weight: 900;
-            font-size: clamp(11px, 1.3vw, 15px);
+            font-size: clamp(12px, 1.4vw, 16px);
             text-transform: uppercase;
             background: #ffffff;
             color: #111111;
             flex-shrink: 0;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
         }
         .pill-urss { border-color: #ec5d7d; }
         .pill-tecno { border-color: #7d8495; }
@@ -233,71 +196,47 @@
         .pill-musica { border-color: #29b6f6; } 
         .pill-guerra { border-color: #4a6fa5; }
         .pill-guernica { border-color: #3b3c6e; }
+        .map-desc { font-size: clamp(13px, 1.5vw, 18px); color: #333333; line-height: 1.4; font-weight: 600; }
 
-        .map-desc {
-            font-size: clamp(11px, 1.3vw, 15px);
-            color: #333333;
-            line-height: 1.3;
-            font-weight: 600;
-        }
-
-        /* CONTROLLI E TASTI DI NAVIGAZIONE */
-        .nav-controls {
-            position: absolute; bottom: 4%; right: 5%; display: flex; gap: 10px; z-index: 10;
-        }
+        /* CONTROLLI */
+        .nav-controls { position: absolute; bottom: 5vh; right: 5vw; display: flex; gap: 15px; z-index: 10; }
         .nav-btn {
-            background: #1a1a1a; border: 1px solid #333; color: #fff; width: 40px; height: 40px;
-            border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-            font-size: 14px; transition: all 0.2s ease;
+            background: #1a1a1a; border: 1px solid #333; color: #fff; width: 45px; height: 45px;
+            border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 16px; transition: all 0.2s ease;
         }
         .nav-btn:hover { background: #cc0000; border-color: #cc0000; transform: translateY(-2px); }
-        .map-slide .nav-btn {
-            background: #f0f0f0; border: 1px solid #ccc; color: #111;
-        }
-        .map-slide .nav-btn:hover {
-            background: #cc0000; border-color: #cc0000; color: #fff;
-        }
-        
-        .slide-counter {
-            position: absolute; bottom: 5%; left: 5%; font-family: 'Space Mono', monospace;
-            font-size: 14px; color: #555; z-index: 10;
-        }
+        .map-slide .nav-btn { background: #f0f0f0; border: 1px solid #ccc; color: #111; }
+        .map-slide .nav-btn:hover { background: #cc0000; border-color: #cc0000; color: #fff; }
+        .slide-counter { position: absolute; bottom: 6vh; left: 5vw; font-family: 'Space Mono', monospace; font-size: 16px; color: #555; z-index: 10; }
 
         /* GRAFICI */
-        .chart-container { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-bottom: 3%; }
+        .chart-container { width: 100%; display: flex; flex-direction: column; gap: 15px; margin-bottom: 3vh; }
         .bar-row { display: flex; align-items: center; gap: 15px; }
-        .bar-label { width: clamp(100px, 15vw, 180px); font-weight: bold; text-align: right; font-size: clamp(11px, 1.4vw, 15px); }
-        .bar-outer { flex-grow: 1; height: 24px; background: #1a1a1a; border-radius: 4px; overflow: hidden; border: 1px solid #2d2d2d; }
-        .bar-fill { height: 100%; background: linear-gradient(90deg, #700000, #cc0000); display: flex; align-items: center; padding-left: 12px; font-weight: bold; font-size: 12px; color: #fff; }
+        .bar-label { width: clamp(110px, 16vw, 160px); font-weight: bold; text-align: right; font-size: clamp(12px, 1.5vw, 16px); }
+        .bar-outer { flex-grow: 1; height: 28px; background: #1a1a1a; border-radius: 4px; overflow: hidden; border: 1px solid #2d2d2d; }
+        .bar-fill { height: 100%; background: linear-gradient(90deg, #700000, #cc0000); display: flex; align-items: center; padding-left: 12px; font-weight: bold; font-size: 13px; color: #fff; }
     </style>
 </head>
 <body>
 
 <div class="presentation-wrapper">
-
-    <!-- CONTATORE SLIDE -->
     <div class="slide-counter" id="counter">1 / 10</div>
 
-    <!-- TASTI NAVIGAZIONE -->
     <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn" title="Precedente"><i class="fa-solid fa-arrow-left"></i></button>
-        <button class="nav-btn" id="nextBtn" title="Successiva"><i class="fa-solid fa-arrow-right"></i></button>
+        <button class="nav-btn" id="prevBtn"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="nav-btn" id="nextBtn"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <!-- SLIDE 1: COPERTINA -->
     <div class="slide active" id="slide1" style="justify-content: center; text-align: center; background: radial-gradient(circle at center, #1c0303 0%, #111111 100%);">
         <h1>L'UNIONE <br><span>SOVIETICA</span></h1>
-        <p style="font-family: 'Space Mono', monospace; letter-spacing: 5px; margin-top: 20px; color: #666; font-size: clamp(12px, 1.8vw, 16px);">UN SECOLO DI POTERE, SCIENZA E ARTE</p>
+        <p style="font-family: 'Space Mono', monospace; letter-spacing: 5px; margin-top: 25px; color: #666; font-size: clamp(13px, 1.8vw, 18px);">UN SECOLO DI POTERE, SCIENZA E ARTE</p>
     </div>
 
-    <!-- SLIDE 2: MAPPA CONCETTUALE ORIGINALE (SFONDO BIANCO) -->
     <div class="slide map-slide" id="slide2">
         <div class="content-area">
             <div class="map-container">
-                <div class="map-left-title">
-                    PERCHÉ HO<br>SCELTO QUESTO<br>ARGOMENTO?
-                </div>
-                
+                <div class="map-left-title">PERCHÉ HO<br>SCELTO QUESTO<br>ARGOMENTO?</div>
                 <div class="map-center-svg">
                     <svg width="100%" height="100%" viewBox="0 0 70 480" fill="none" preserveAspectRatio="xMidYMid meet">
                         <path d="M 15,30 Q 75,240 15,450" stroke="#ec5d7d" stroke-width="4" stroke-dasharray="6,6" fill="none" />
@@ -305,38 +244,18 @@
                         <path d="M 15,450 L 25,445 M 15,450 L 10,440" stroke="#ec5d7d" stroke-width="3" />
                     </svg>
                 </div>
-                
                 <div class="map-right-list">
-                    <div class="map-row">
-                        <div class="map-pill pill-urss">1. LA URSS</div>
-                        <div class="map-desc">Spiegazione generale sulla URSS, i vari conflitti, gli accordi, i diversi dittatori.</div>
-                    </div>
-                    <div class="map-row">
-                        <div class="map-pill pill-tecno">Tecnologia</div>
-                        <div class="map-desc">Vari tipi di energia, e combustibili usati in Russia, e come vengono usati.</div>
-                    </div>
-                    <div class="map-row">
-                        <div class="map-pill pill-scienze">Scienze</div>
-                        <div class="map-desc">Gli studi sovietici sul DNA.</div>
-                    </div>
-                    <div class="map-row">
-                        <div class="map-pill pill-musica">Musica</div>
-                        <div class="map-desc">Dmitrij Šostakovič: comporre sotto il regime e la musica come ribellione segreta.</div>
-                    </div>
-                    <div class="map-row">
-                        <div class="map-pill pill-guerra">G. C. Spagnola</div>
-                        <div class="map-desc">La URSS ha avuto un grande impatto sulla guerra civile spagnola, mandando vari aiuti, come armate militari.</div>
-                    </div>
-                    <div class="map-row">
-                        <div class="map-pill pill-guernica">Il Guernica</div>
-                        <div class="map-desc">La molto conosciuta opera di Pablo Picasso, in stile cubista realizzata nel 1937.</div>
-                    </div>
+                    <div class="map-row"><div class="map-pill pill-urss">1. LA URSS</div><div class="map-desc">Spiegazione generale sulla URSS, i vari conflitti, gli accordi, i diversi datori.</div></div>
+                    <div class="map-row"><div class="map-pill pill-tecno">Tecnologia</div><div class="map-desc">Vari tipi di energia, e combustibili usati in Russia, e come vengono usati.</div></div>
+                    <div class="map-row"><div class="map-pill pill-scienze">Scienze</div><div class="map-desc">Gli studi sovietici sul DNA.</div></div>
+                    <div class="map-row"><div class="map-pill pill-musica">Musica</div><div class="map-desc">Dmitrij Šostakovič: comporre sotto il regime e la musica come ribellione segreta.</div></div>
+                    <div class="map-row"><div class="map-pill pill-guerra">G. C. Spagnola</div><div class="map-desc">La URSS ha avuto un grande impatto sulla guerra civile spagnola, mandando vari aiuti, come armate militari.</div></div>
+                    <div class="map-row"><div class="map-pill pill-guernica">Il Guernica</div><div class="map-desc">La molto conosciuta opera di Pablo Picasso, in stile cubista realizzata nel 1937.</div></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 3: 1. LA URSS (STORIA) -->
     <div class="slide" id="slide3">
         <h2 class="slide-title">1. L'Unione Sovietica</h2>
         <div class="content-area">
@@ -346,47 +265,29 @@
                         <p class="slide-quote-text">"La pianificazione economica statale ha trasformato l'URSS."</p>
                         <span class="slide-quote-author">— I Piani Quinquennali</span>
                     </div>
-                    <p style="margin-top: 10px;">
-                        Dopo la Rivoluzione del 1917, l'URSS visse un'industrializzazione forzata sotto Stalin. La crescita produttiva colossale fu pagata con la totale sottomissione dei diritti individuali.
-                    </p>
+                    <p>Dopo la Rivoluzione del 1917, l'URSS visse un'industrializzazione forzata sotto Stalin. La crescita produttiva colossale fu pagata con la totale sottomissione dei diritti individuali.</p>
                 </div>
-                <!-- TUA FOTO REALISTICA CARICATA: SFILATA PIAZZA ROSSA -->
-                <div class="historical-image-container">
-                    <img src="image_e525e6.jpg" alt="Sfilata Piazza Rossa URSS">
-                </div>
+                <div class="historical-image-container contain-fill"><img src="image_e525e6.jpg" alt="Sfilata URSS"></div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 4: TECNOLOGIA -->
     <div class="slide" id="slide4">
         <h2 class="slide-title">Tecnologia: Combustibili ed Energia</h2>
         <div class="content-area">
             <div class="two-column-clean">
                 <div class="left-content-clean">
                     <div class="chart-container">
-                        <div class="bar-row">
-                            <div class="bar-label">Riserve di Gas</div>
-                            <div class="bar-outer"><div class="bar-fill" style="width: 85%;">Primo posto al mondo</div></div>
-                        </div>
-                        <div class="bar-row">
-                            <div class="bar-label">Petrolio ed Export</div>
-                            <div class="bar-outer"><div class="bar-fill" style="width: 70%;">Infrastrutture siberiane</div></div>
-                        </div>
+                        <div class="bar-row"><div class="bar-label">Riserve di Gas</div><div class="bar-outer"><div class="bar-fill" style="width: 85%;">Primo posto al mondo</div></div></div>
+                        <div class="bar-row"><div class="bar-label">Petrolio ed Export</div><div class="bar-outer"><div class="bar-fill" style="width: 70%;">Infrastrutture siberiane</div></div></div>
                     </div>
-                    <p>
-                        Le grandi reti energetiche e di trivellazione furono create in epoca sovietica sfidando le condizioni estreme del <strong>Permafrost siberiano</strong>, gettando le basi della moderna economia russa.
-                    </p>
+                    <p>Le grandi reti energetiche e di trivellazione furono create in epoca sovietica sfidando le condizioni estreme del <strong>Permafrost siberiano</strong>, gettando le basi della moderna economia russa.</p>
                 </div>
-                <!-- ICONA DI BACKUP IN ATTESA DEL FILE REALE -->
-                <div class="historical-image-container">
-                    <i class="fa-solid fa-industry"></i>
-                </div>
+                <div class="historical-image-container historical-image-container-icon"><i class="fa-solid fa-industry"></i></div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 5: SCIENZE -->
     <div class="slide" id="slide5">
         <h2 class="slide-title">Scienze: Il Caso Lysenko e il DNA</h2>
         <div class="content-area">
@@ -396,41 +297,29 @@
                         <p class="slide-quote-text">"La genetica classica e lo studio del DNA sono scienza borghese."</p>
                         <span class="slide-quote-author">— Trofim Lysenko</span>
                     </div>
-                    <p>
-                        L'agronomo sovietico Lysenko rigettò la genetica di Mendel, promettendo raccolti miracolosi nel gelo siberiano. Chi difendeva il metodo scientifico fu arrestato o deportato, provocando gravissime carestie agricole.
-                    </p>
+                    <p>L'agronomo sovietico Lysenko rigettò la genetica di Mendel, promettendo raccolti miracolosi nel gelo siberiano. Chi difendeva il metodo scientifico fu arrestato o deportato, provocando gravissime carestie agricole.</p>
                 </div>
-                <!-- ICONA DI BACKUP IN ATTESA DEL FILE REALE -->
-                <div class="historical-image-container">
-                    <i class="fa-solid fa-dna"></i>
-                </div>
+                <div class="historical-image-container historical-image-container-icon"><i class="fa-solid fa-dna"></i></div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 6: MUSICA -->
     <div class="slide" id="slide6">
-        <h2 class="slide-title" style="border-left: 5px solid #cc0000; padding-left: 15px;">4. MUSICA: DMITRIJ ŠOSTAKOVIČ</h2>
+        <h2 class="slide-title">4. MUSICA: DMITRIJ ŠOSTAKOVIČ</h2>
         <div class="content-area">
-            <div class="music-layout-clean">
-                <div class="music-left">
-                    <div class="music-quote-clean">
-                        <p class="music-quote-text">"La mia musica è un monumento alle vittime del regime e della guerra."</p>
-                        <span class="music-quote-author">— Dmitrij Šostakovič</span>
+            <div class="two-column-clean">
+                <div class="left-content-clean">
+                    <div class="slide-quote-clean">
+                        <p class="slide-quote-text">"La mia musica è un monumento alle vittime del regime."</p>
+                        <span class="slide-quote-author">— Dmitrij Šostakovič</span>
                     </div>
-                    <p class="music-desc-clean">
-                        La sua <strong>Settima Sinfonia "Leningrado"</strong> divenne il simbolo della resistenza contro l'invasione nazista, ma la sua vita fu un equilibrio costante tra genio artistico e censura staliniana.
-                    </p>
+                    <p>La sua <strong>Settima Sinfonia "Leningrado"</strong> divenne il simbolo della resistenza contro l'invasione nazista, ma la sua vita fu un equilibrio costante tra genio artistico e censura staliniana.</p>
                 </div>
-                <!-- TUA FOTO REALISTICA CARICATA DI SHOSTAKOVICH -->
-                <div class="historical-image-container">
-                    <img src="image_e525c7.png" alt="Dmitri Shostakovich">
-                </div>
+                <div class="historical-image-container"><img src="image_e525c7.png" alt="Shostakovich"></div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 7: GUERRA CIVILE SPAGNOLA -->
     <div class="slide" id="slide7">
         <h2 class="slide-title">La Guerra Civile Spagnola</h2>
         <div class="content-area">
@@ -440,72 +329,58 @@
                         <p class="slide-quote-text">"L'URSS inviò i caccia Mosca I-16 a difesa della Repubblica."</p>
                         <span class="slide-quote-author">— L'intervento militare sovietico</span>
                     </div>
-                    <p>
-                        L'Unione Sovietica sostenne attivamente i Repubblicani inviando armi e velivoli storici come il caccia <strong>Polikarpov I-16 "Mosca"</strong>, scontrandosi con le forze fasciste in una prova generale della Seconda Guerra Mondiale.
-                    </p>
+                    <p>L'Unione Sovietica sostenne attivamente i Repubblicani inviando armi e velivoli storici come il caccia <strong>Polikarpov I-16 "Mosca"</strong>, scontrandosi con le forze fasciste in una prova generale della Seconda Guerra Mondiale.</p>
                 </div>
-                <!-- TUA FOTO REALISTICA CARICATA DELLA GUERRA CIVILE -->
-                <div class="historical-image-container">
-                    <img src="image_e522de.jpg" alt="Guerra Civile Spagnola">
-                </div>
+                <div class="historical-image-container contain-fill"><img src="image_e522de.jpg" alt="Guerra Civile"></div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 8: ARTE (IL GUERNICA) -->
     <div class="slide" id="slide8">
         <h2 class="slide-title">Arte: Il Guernica (1937)</h2>
         <div class="content-area">
             <div class="two-column-clean">
-                <!-- TUA FOTO REALISTICA CARICATA DI GUERNICA DI PICASSO -->
-                <div class="historical-image-container" style="border-color: #3b3c6e;">
-                    <img src="image_e5258e.jpg" alt="Guernica di Picasso">
-                </div>
+                <div class="historical-image-container"><img src="image_e5258e.jpg" alt="Guernica"></div>
                 <div>
                     <ul class="list-styled">
-                        <li><i class="fa-solid fa-eye-slash"></i> <strong>Bianco, nero e grigio:</strong> Colori eliminati per trasmettere il senso di morte, fumo e cenere del bombardamento.</li>
-                        <li><i class="fa-solid fa-face-frown"></i> <strong>Deformazione cubista:</strong> Corpi spezzati, animali sofferenti e madri disperate che urlano al cielo.</li>
-                        <li><i class="fa-solid fa-bullhorn"></i> <strong>Simbolo di pace:</strong> Un manifesto eterno contro la sofferenza e la distruzione dei civili in guerra.</li>
+                        <li><i class="fa-solid fa-eye-slash"></i> <div><strong>Monocromatismo:</strong> Colori eliminati per trasmettere il senso di morte, fumo e cenere del bombardamento.</div></li>
+                        <li><i class="fa-solid fa-face-frown"></i> <div><strong>Deformazione cubista:</strong> Corpi spezzati, animali sofferenti e madri disperate che urlano al cielo.</div></li>
+                        <li><i class="fa-solid fa-dove"></i> <div><strong>Simbolo universale:</strong> Un manifesto eterno contro la sofferenza e la distruzione dei civili in guerra.</div></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 9: EDUCAZIONE CIVICA -->
     <div class="slide" id="slide9">
         <h2 class="slide-title">Ed. Civica: Libertà di Pensiero</h2>
         <div class="content-area">
-            <div class="tile-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-                <div class="tile" style="background: #181818; padding: 30px; border-radius: 4px; border-top: 4px solid #cc0000;">
-                    <i class="fa-solid fa-comment-slash" style="font-size: 35px; color: #cc0000; margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 24px; color: #fff; margin-bottom: 10px;">Articolo 21</h3>
-                    <p style="font-size: 18px; color: #aaa;">La dittatura staliniana ci ricorda quanto sia prezioso difendere la nostra libertà di parola e di stampa.</p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%;">
+                <div style="background: #181818; padding: 25px; border-radius: 6px; border-top: 4px solid #cc0000; height: 100%;">
+                    <i class="fa-solid fa-comment-slash" style="font-size: 28px; color: #cc0000; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 20px; margin-bottom: 10px; color: #fff;">Articolo 21</h3>
+                    <p style="font-size: 15px; color: #aaa; line-height: 1.4;">La dittatura staliniana ci ricorda quanto sia prezioso difendere la nostra libertà di parola e di stampa.</p>
                 </div>
-                <div class="tile" style="background: #181818; padding: 30px; border-radius: 4px; border-top: 4px solid #cc0000;">
-                    <i class="fa-solid fa-microscope" style="font-size: 35px; color: #cc0000; margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 24px; color: #fff; margin-bottom: 10px;">La Scienza</h3>
-                    <p style="font-size: 18px; color: #aaa;">Il caso Lysenko dimostra che la ricerca scientifica deve rimanere indipendente e non essere guidata dai politici.</p>
+                <div style="background: #181818; padding: 25px; border-radius: 6px; border-top: 4px solid #cc0000; height: 100%;">
+                    <i class="fa-solid fa-microscope" style="font-size: 28px; color: #cc0000; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 20px; margin-bottom: 10px; color: #fff;">La Scienza</h3>
+                    <p style="font-size: 15px; color: #aaa; line-height: 1.4;">Il caso Lysenko dimostra che la ricerca scientifica deve rimanere indipendente e non asservita al potere politico.</p>
                 </div>
-                <div class="tile" style="background: #181818; padding: 30px; border-radius: 4px; border-top: 4px solid #cc0000;">
-                    <i class="fa-solid fa-dove" style="font-size: 35px; color: #cc0000; margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 24px; color: #fff; margin-bottom: 10px;">Diritti Umani</h3>
-                    <p style="font-size: 18px; color: #aaa;">Guernica e i Gulag sono l'avvertimento eterno su cosa succede quando la vita dell'essere umano perde valore.</p>
+                <div style="background: #181818; padding: 25px; border-radius: 6px; border-top: 4px solid #cc0000; height: 100%;">
+                    <i class="fa-solid fa-dove" style="font-size: 28px; color: #cc0000; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 20px; margin-bottom: 10px; color: #fff;">Diritti Umani</h3>
+                    <p style="font-size: 15px; color: #aaa; line-height: 1.4;">Guernica e i Gulag sono l'avvertimento eterno su cosa succede quando la vita umana perde valore davanti all'ideologia.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 10: FINE -->
     <div class="slide" id="slide10" style="background: linear-gradient(135deg, #cc0000 0%, #600000 100%); color: #fff; justify-content: center; text-align: center;">
-        <h1 style="font-size: 85px; text-shadow: 0 10px 30px rgba(0,0,0,0.5); line-height: 1.1;">GRAZIE PER L'ATTENZIONE</h1>
-        <p style="font-family: 'Space Mono', monospace; font-size: 20px; letter-spacing: 5px; margin-top: 30px; color: rgba(255,255,255,0.7);">FINE DELLA PRESENTAZIONE</p>
+        <h1 style="font-size: clamp(45px, 8vw, 95px); text-shadow: 0 10px 30px rgba(0,0,0,0.5);">GRAZIE PER L'ATTENZIONE</h1>
     </div>
-
 </div>
 
 <script>
-    // CAMBIO SLIDE INTERATTIVO
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -514,42 +389,21 @@
 
     function updatePresentation() {
         slides.forEach((slide, index) => {
-            if (index === currentSlideIndex) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
-            }
+            slide.classList.toggle('active', index === currentSlideIndex);
         });
         counter.textContent = `${currentSlideIndex + 1} / ${slides.length}`;
     }
 
-    function nextSlide() {
-        if (currentSlideIndex < slides.length - 1) {
-            currentSlideIndex++;
-            updatePresentation();
-        }
-    }
-
-    function prevSlide() {
-        if (currentSlideIndex > 0) {
-            currentSlideIndex--;
-            updatePresentation();
-        }
-    }
+    function nextSlide() { if (currentSlideIndex < slides.length - 1) { currentSlideIndex++; updatePresentation(); } }
+    function prevSlide() { if (currentSlideIndex > 0) { currentSlideIndex--; updatePresentation(); } }
 
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
-
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === ' ') {
-            nextSlide();
-        } else if (e.key === 'ArrowLeft') {
-            prevSlide();
-        }
+        if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+        else if (e.key === 'ArrowLeft') prevSlide();
     });
-
     updatePresentation();
 </script>
-
 </body>
 </html>
