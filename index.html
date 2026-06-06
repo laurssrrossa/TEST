@@ -19,10 +19,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
+            overflow: hidden;
         }
         
-        /* PRESENTAZIONE A TUTTO SCHERMO (Risolve il problema del "diventato piccolo") */
+        /* PRESENTAZIONE FLUIDA A TUTTO SCHERMO */
         .presentation-wrapper {
             position: relative;
             width: 100vw;
@@ -37,13 +37,13 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            padding: 6vh 8vw;
+            padding: 8vh 8vw;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.2s ease-in-out;
+            transition: opacity 0.25s ease-in-out;
             background-color: #111111;
             z-index: 1;
         }
@@ -55,27 +55,27 @@
         }
 
         .slide::before {
-            content: ''; position: absolute; top: -20%; right: -10%; width: 40%; height: 75%;
-            background: radial-gradient(circle, rgba(204, 0, 0, 0.1) 0%, transparent 70%);
+            content: ''; position: absolute; top: -20%; right: -10%; width: 45%; height: 80%;
+            background: radial-gradient(circle, rgba(204, 0, 0, 0.08) 0%, transparent 70%);
             z-index: 0;
             pointer-events: none;
         }
         .slide > * { position: relative; z-index: 2; }
 
         h1, h2, h3 { font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
-        h1 { font-size: clamp(38px, 6vw, 80px); line-height: 1.1; text-align: center; color: #ffffff; }
+        h1 { font-size: clamp(36px, 6vw, 75px); line-height: 1.1; text-align: center; color: #ffffff; }
         h1 span { color: #cc0000; }
         
         .slide-title { 
-            font-size: clamp(24px, 3.5vw, 42px); 
+            font-size: clamp(24px, 3.5vw, 40px); 
             color: #cc0000; 
-            margin-bottom: 3vh; 
+            margin-bottom: 4vh; 
             border-left: 6px solid #cc0000; 
             padding-left: 15px; 
             text-transform: uppercase;
             line-height: 1.1;
         }
-        p, li { font-size: clamp(15px, 1.8vw, 22px); line-height: 1.5; color: #cccccc; }
+        p, li { font-size: clamp(15px, 1.7vw, 21px); line-height: 1.6; color: #cccccc; }
         strong { color: #ffffff; }
 
         .content-area { 
@@ -83,7 +83,6 @@
             display: flex; 
             align-items: center; 
             width: 100%; 
-            height: 75vh;
         }
 
         .two-column-clean { 
@@ -113,10 +112,10 @@
             font-size: 70px;
             color: #cc0000;
             font-family: serif;
-            opacity: 0.7;
+            opacity: 0.6;
         }
         .slide-quote-text {
-            font-size: clamp(18px, 2.3vw, 28px);
+            font-size: clamp(18px, 2.2vw, 26px);
             font-style: italic;
             color: #ffffff;
             line-height: 1.4;
@@ -124,67 +123,64 @@
             margin-bottom: 1vh;
         }
         .slide-quote-author {
-            font-size: clamp(12px, 1.4vw, 18px);
+            font-size: clamp(12px, 1.3vw, 17px);
             color: #cc0000;
             font-family: 'Space Mono', monospace;
             font-weight: bold;
             display: block;
         }
 
-        /* STRUTTURA IMMAGINE CORRETTA (Risolve il bug del taglio verticale) */
+        /* FIX COMPLETO IMMAGINI (Incluso Šostakovič) */
         .historical-image-container {
             width: 100%;
-            height: 45vh; /* Altezza dinamica rispetto allo schermo */
-            max-height: 450px;
+            height: 50vh; 
+            max-height: 480px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            border: 1px solid #333;
-            background-color: #1a1a1a;
-        }
-        .historical-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Mostra l'intera immagine senza MAI tagliarla */
-            background-color: #111111;
-            display: block;
-        }
-        .historical-image-container.contain-fill img {
-            object-fit: cover; /* Mantiene la copertura fluida per i wallpaper */
-        }
-        .historical-image-container-icon {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid #252525;
+            background-color: #151515;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+        .historical-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Garantisce che la foto sia interamente visibile senza tagli */
+            display: block;
+        }
+        .historical-image-container.cover-mode img {
+            object-fit: cover; /* Ottimale per sfondi pieni o mappe estese */
+        }
         .historical-image-container i {
-            font-size: clamp(40px, 6vw, 70px);
-            color: #444;
+            font-size: clamp(45px, 6vw, 75px);
+            color: #333333;
         }
 
         .list-styled { list-style: none; }
-        .list-styled li { margin-bottom: 4vh; display: flex; align-items: flex-start; gap: 15px; }
-        .list-styled i { color: #cc0000; font-size: clamp(14px, 1.6vw, 20px); margin-top: 6px; }
+        .list-styled li { margin-bottom: 3.5vh; display: flex; align-items: flex-start; gap: 15px; }
+        .list-styled i { color: #cc0000; font-size: clamp(14px, 1.5vw, 19px); margin-top: 6px; }
 
         /* SLIDE MAPPA */
         .map-slide { background-color: #ffffff !important; color: #000000 !important; }
         .map-slide::before { display: none; }
         .map-slide .slide-counter { color: #666666 !important; }
-        .map-container { display: grid; grid-template-columns: 20% 8% 72%; align-items: center; width: 100%; height: 100%; }
-        .map-left-title { font-size: clamp(16px, 2.4vw, 28px); font-weight: 900; text-transform: uppercase; color: #111111; line-height: 1.2; text-align: center; }
+        .map-container { display: grid; grid-template-columns: 22% 6% 72%; align-items: center; width: 100%; }
+        .map-left-title { font-size: clamp(16px, 2.4vw, 26px); font-weight: 900; text-transform: uppercase; color: #111111; line-height: 1.2; text-align: center; }
         .map-center-svg { display: flex; justify-content: center; align-items: center; height: 100%; }
-        .map-right-list { display: flex; flex-direction: column; gap: 2.5vh; }
+        .map-right-list { display: flex; flex-direction: column; gap: 2vh; }
         .map-row { display: flex; align-items: center; gap: 20px; }
         
         .map-pill {
-            width: clamp(130px, 16vw, 200px);
+            width: clamp(130px, 15vw, 190px);
             padding: 8px 12px;
             border-radius: 20px;
             border-width: 3px;
             border-style: solid;
             text-align: center;
             font-weight: 900;
-            font-size: clamp(12px, 1.4vw, 16px);
+            font-size: clamp(12px, 1.3vw, 15px);
             text-transform: uppercase;
             background: #ffffff;
             color: #111111;
@@ -196,25 +192,25 @@
         .pill-musica { border-color: #29b6f6; } 
         .pill-guerra { border-color: #4a6fa5; }
         .pill-guernica { border-color: #3b3c6e; }
-        .map-desc { font-size: clamp(13px, 1.5vw, 18px); color: #333333; line-height: 1.4; font-weight: 600; }
+        .map-desc { font-size: clamp(13px, 1.4vw, 17px); color: #333333; line-height: 1.4; font-weight: 600; }
 
-        /* CONTROLLI */
+        /* INTERFACCIA DI NAVIGAZIONE */
         .nav-controls { position: absolute; bottom: 5vh; right: 5vw; display: flex; gap: 15px; z-index: 10; }
         .nav-btn {
-            background: #1a1a1a; border: 1px solid #333; color: #fff; width: 45px; height: 45px;
+            background: #1a1a1a; border: 1px solid #333; color: #fff; width: 46px; height: 46px;
             border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;
             font-size: 16px; transition: all 0.2s ease;
         }
         .nav-btn:hover { background: #cc0000; border-color: #cc0000; transform: translateY(-2px); }
         .map-slide .nav-btn { background: #f0f0f0; border: 1px solid #ccc; color: #111; }
         .map-slide .nav-btn:hover { background: #cc0000; border-color: #cc0000; color: #fff; }
-        .slide-counter { position: absolute; bottom: 6vh; left: 5vw; font-family: 'Space Mono', monospace; font-size: 16px; color: #555; z-index: 10; }
+        .slide-counter { position: absolute; bottom: 6vh; left: 5vw; font-family: 'Space Mono', monospace; font-size: 15px; color: #555; z-index: 10; }
 
-        /* GRAFICI */
+        /* COMPONENTI GRAFICI */
         .chart-container { width: 100%; display: flex; flex-direction: column; gap: 15px; margin-bottom: 3vh; }
         .bar-row { display: flex; align-items: center; gap: 15px; }
-        .bar-label { width: clamp(110px, 16vw, 160px); font-weight: bold; text-align: right; font-size: clamp(12px, 1.5vw, 16px); }
-        .bar-outer { flex-grow: 1; height: 28px; background: #1a1a1a; border-radius: 4px; overflow: hidden; border: 1px solid #2d2d2d; }
+        .bar-label { width: clamp(110px, 15vw, 150px); font-weight: bold; text-align: right; font-size: clamp(12px, 1.4vw, 15px); }
+        .bar-outer { flex-grow: 1; height: 30px; background: #1a1a1a; border-radius: 4px; overflow: hidden; border: 1px solid #2d2d2d; }
         .bar-fill { height: 100%; background: linear-gradient(90deg, #700000, #cc0000); display: flex; align-items: center; padding-left: 12px; font-weight: bold; font-size: 13px; color: #fff; }
     </style>
 </head>
@@ -224,8 +220,8 @@
     <div class="slide-counter" id="counter">1 / 10</div>
 
     <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn"><i class="fa-solid fa-arrow-left"></i></button>
-        <button class="nav-btn" id="nextBtn"><i class="fa-solid fa-arrow-right"></i></button>
+        <button class="nav-btn" id="prevBtn" aria-label="Slide precedente"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="nav-btn" id="nextBtn" aria-label="Slide successiva"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
     <div class="slide active" id="slide1" style="justify-content: center; text-align: center; background: radial-gradient(circle at center, #1c0303 0%, #111111 100%);">
@@ -267,7 +263,7 @@
                     </div>
                     <p>Dopo la Rivoluzione del 1917, l'URSS visse un'industrializzazione forzata sotto Stalin. La crescita produttiva colossale fu pagata con la totale sottomissione dei diritti individuali.</p>
                 </div>
-                <div class="historical-image-container contain-fill"><img src="image_e525e6.jpg" alt="Sfilata URSS"></div>
+                <div class="historical-image-container cover-mode"><img src="image_e525e6.jpg" alt="Sfilata d'epoca sulla Piazza Rossa"></div>
             </div>
         </div>
     </div>
@@ -283,7 +279,7 @@
                     </div>
                     <p>Le grandi reti energetiche e di trivellazione furono create in epoca sovietica sfidando le condizioni estreme del <strong>Permafrost siberiano</strong>, gettando le basi della moderna economia russa.</p>
                 </div>
-                <div class="historical-image-container historical-image-container-icon"><i class="fa-solid fa-industry"></i></div>
+                <div class="historical-image-container"><i class="fa-solid fa-industry"></i></div>
             </div>
         </div>
     </div>
@@ -299,7 +295,7 @@
                     </div>
                     <p>L'agronomo sovietico Lysenko rigettò la genetica di Mendel, promettendo raccolti miracolosi nel gelo siberiano. Chi difendeva il metodo scientifico fu arrestato o deportato, provocando gravissime carestie agricole.</p>
                 </div>
-                <div class="historical-image-container historical-image-container-icon"><i class="fa-solid fa-dna"></i></div>
+                <div class="historical-image-container"><i class="fa-solid fa-dna"></i></div>
             </div>
         </div>
     </div>
@@ -315,7 +311,7 @@
                     </div>
                     <p>La sua <strong>Settima Sinfonia "Leningrado"</strong> divenne il simbolo della resistenza contro l'invasione nazista, ma la sua vita fu un equilibrio costante tra genio artistico e censura staliniana.</p>
                 </div>
-                <div class="historical-image-container"><img src="image_e525c7.png" alt="Shostakovich"></div>
+                <div class="historical-image-container"><img src="image_e525c7.png" alt="Ritratto storico di Dmitrij Šostakovič"></div>
             </div>
         </div>
     </div>
@@ -331,7 +327,7 @@
                     </div>
                     <p>L'Unione Sovietica sostenne attivamente i Repubblicani inviando armi e velivoli storici come il caccia <strong>Polikarpov I-16 "Mosca"</strong>, scontrandosi con le forze fasciste in una prova generale della Seconda Guerra Mondiale.</p>
                 </div>
-                <div class="historical-image-container contain-fill"><img src="image_e522de.jpg" alt="Guerra Civile"></div>
+                <div class="historical-image-container cover-mode"><img src="image_e522de.jpg" alt="Truppe e schieramenti storici della Guerra Civile"></div>
             </div>
         </div>
     </div>
@@ -340,7 +336,7 @@
         <h2 class="slide-title">Arte: Il Guernica (1937)</h2>
         <div class="content-area">
             <div class="two-column-clean">
-                <div class="historical-image-container"><img src="image_e5258e.jpg" alt="Guernica"></div>
+                <div class="historical-image-container"><img src="image_e5258e.jpg" alt="Opera d'arte Guernica di Pablo Picasso"></div>
                 <div>
                     <ul class="list-styled">
                         <li><i class="fa-solid fa-eye-slash"></i> <div><strong>Monocromatismo:</strong> Colori eliminati per trasmettere il senso di morte, fumo e cenere del bombardamento.</div></li>
@@ -358,25 +354,25 @@
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%;">
                 <div style="background: #181818; padding: 25px; border-radius: 6px; border-top: 4px solid #cc0000; height: 100%;">
                     <i class="fa-solid fa-comment-slash" style="font-size: 28px; color: #cc0000; margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 20px; margin-bottom: 10px; color: #fff;">Articolo 21</h3>
-                    <p style="font-size: 15px; color: #aaa; line-height: 1.4;">La dittatura staliniana ci ricorda quanto sia prezioso difendere la nostra libertà di parola e di stampa.</p>
+                    <h3 style="font-size: 19px; margin-bottom: 10px; color: #fff;">Articolo 21</h3>
+                    <p style="font-size: 15px; color: #aaa; line-height: 1.5;">La dittatura staliniana ci ricorda quanto sia prezioso difendere la nostra libertà di parola, di espressione e di stampa.</p>
                 </div>
                 <div style="background: #181818; padding: 25px; border-radius: 6px; border-top: 4px solid #cc0000; height: 100%;">
                     <i class="fa-solid fa-microscope" style="font-size: 28px; color: #cc0000; margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 20px; margin-bottom: 10px; color: #fff;">La Scienza</h3>
-                    <p style="font-size: 15px; color: #aaa; line-height: 1.4;">Il caso Lysenko dimostra che la ricerca scientifica deve rimanere indipendente e non asservita al potere politico.</p>
+                    <h3 style="font-size: 19px; margin-bottom: 10px; color: #fff;">La Scienza</h3>
+                    <p style="font-size: 15px; color: #aaa; line-height: 1.5;">Il caso Lysenko dimostra che la ricerca scientifica deve rimanere indipendente e libera da costrizioni politiche.</p>
                 </div>
                 <div style="background: #181818; padding: 25px; border-radius: 6px; border-top: 4px solid #cc0000; height: 100%;">
                     <i class="fa-solid fa-dove" style="font-size: 28px; color: #cc0000; margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 20px; margin-bottom: 10px; color: #fff;">Diritti Umani</h3>
-                    <p style="font-size: 15px; color: #aaa; line-height: 1.4;">Guernica e i Gulag sono l'avvertimento eterno su cosa succede quando la vita umana perde valore davanti all'ideologia.</p>
+                    <h3 style="font-size: 19px; margin-bottom: 10px; color: #fff;">Diritti Umani</h3>
+                    <p style="font-size: 15px; color: #aaa; line-height: 1.5;">Guernica e le repressioni sono l'avvertimento eterno di cosa succede quando lo Stato annulla il valore della vita umana.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="slide" id="slide10" style="background: linear-gradient(135deg, #cc0000 0%, #600000 100%); color: #fff; justify-content: center; text-align: center;">
-        <h1 style="font-size: clamp(45px, 8vw, 95px); text-shadow: 0 10px 30px rgba(0,0,0,0.5);">GRAZIE PER L'ATTENZIONE</h1>
+        <h1 style="font-size: clamp(45px, 8vw, 90px); text-shadow: 0 10px 30px rgba(0,0,0,0.5);">GRAZIE PER L'ATTENZIONE</h1>
     </div>
 </div>
 
@@ -399,9 +395,16 @@
 
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
+    
+    /* NAVIGAZIONE DA TASTIERA DI LIVELLO PROFESSIONALE */
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
-        else if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+        }
     });
     updatePresentation();
 </script>
