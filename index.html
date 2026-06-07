@@ -22,6 +22,7 @@
             overflow: hidden;
         }
         
+        /* PRESENTAZIONE FLUIDA A TUTTO SCHERMO */
         .presentation-wrapper {
             position: relative;
             width: 100vw;
@@ -47,7 +48,11 @@
             z-index: 1;
         }
 
-        .slide.active { opacity: 1; pointer-events: auto; z-index: 2; }
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 2;
+        }
 
         .slide::before {
             content: ''; position: absolute; top: -20%; right: -10%; width: 45%; height: 80%;
@@ -73,7 +78,12 @@
         p, li { font-size: clamp(15px, 1.7vw, 21px); line-height: 1.6; color: #cccccc; }
         strong { color: #ffffff; }
 
-        .content-area { flex-grow: 1; display: flex; align-items: center; width: 100%; }
+        .content-area { 
+            flex-grow: 1; 
+            display: flex; 
+            align-items: center; 
+            width: 100%; 
+        }
 
         .two-column-clean { 
             display: grid; 
@@ -83,248 +93,136 @@
             width: 100%;
         }
 
-        .left-content-clean { display: flex; flex-direction: column; justify-content: center; }
+        .left-content-clean {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-        .slide-quote-clean { position: relative; padding-left: 35px; margin-bottom: 3vh; }
+        .slide-quote-clean {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 3vh;
+        }
         .slide-quote-clean::before {
             content: '“';
-            position: absolute; left: 0; top: -20px;
-            font-size: 70px; color: #cc0000; font-family: serif; opacity: 0.6;
+            position: absolute;
+            left: 0;
+            top: -20px;
+            font-size: 70px;
+            color: #cc0000;
+            font-family: serif;
+            opacity: 0.6;
         }
         .slide-quote-text {
             font-size: clamp(18px, 2.2vw, 26px);
-            font-style: italic; color: #ffffff; line-height: 1.4; font-weight: 700; margin-bottom: 1vh;
+            font-style: italic;
+            color: #ffffff;
+            line-height: 1.4;
+            font-weight: 700;
+            margin-bottom: 1vh;
         }
         .slide-quote-author {
             font-size: clamp(12px, 1.3vw, 17px);
-            color: #cc0000; font-family: 'Space Mono', monospace; font-weight: bold; display: block;
+            color: #cc0000;
+            font-family: 'Space Mono', monospace;
+            font-weight: bold;
+            display: block;
         }
 
+        /* FIX COMPLETO IMMAGINI (Incluso Šostakovič) */
         .historical-image-container {
-            width: 100%; height: 50vh; max-height: 480px;
-            border-radius: 8px; overflow: hidden;
+            width: 100%;
+            height: 50vh; 
+            max-height: 480px;
+            border-radius: 8px;
+            overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            border: 1px solid #252525; background-color: #151515;
-            display: flex; align-items: center; justify-content: center;
+            border: 1px solid #252525;
+            background-color: #151515;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .historical-image-container img { width: 100%; height: 100%; object-fit: contain; display: block; }
-        .historical-image-container.cover-mode img { object-fit: cover; }
+        .historical-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Garantisce che la foto sia interamente visibile senza tagli */
+            display: block;
+        }
+        .historical-image-container.cover-mode img {
+            object-fit: cover; /* Ottimale per sfondi pieni o mappe estese */
+        }
+        .historical-image-container i {
+            font-size: clamp(45px, 6vw, 75px);
+            color: #333333;
+        }
 
         .list-styled { list-style: none; }
-        .list-styled li { margin-bottom: 3vh; display: flex; align-items: flex-start; gap: 15px; }
+        .list-styled li { margin-bottom: 3.5vh; display: flex; align-items: flex-start; gap: 15px; }
         .list-styled i { color: #cc0000; font-size: clamp(14px, 1.5vw, 19px); margin-top: 6px; }
 
-        /* MAPPA CORRETTA */
+        /* SLIDE MAPPA */
         .map-slide { background-color: #ffffff !important; color: #000000 !important; }
         .map-slide::before { display: none; }
+        .map-slide .slide-counter { color: #666666 !important; }
         .map-container { display: grid; grid-template-columns: 22% 6% 72%; align-items: center; width: 100%; }
-        .map-left-title { font-size: clamp(16px, 2.4vw, 26px); font-weight: 900; text-transform: uppercase; color: #111111; text-align: center; }
-        .map-right-list { display: grid; grid-template-rows: repeat(7, 1fr); gap: 1.2vh; }
+        .map-left-title { font-size: clamp(16px, 2.4vw, 26px); font-weight: 900; text-transform: uppercase; color: #111111; line-height: 1.2; text-align: center; }
+        .map-center-svg { display: flex; justify-content: center; align-items: center; height: 100%; }
+        .map-right-list { display: flex; flex-direction: column; gap: 1.5vh; } /* Ridotto leggermente per far spazio al nuovo elemento */
         .map-row { display: flex; align-items: center; gap: 20px; }
+        
         .map-pill {
-            width: clamp(130px, 15vw, 190px); padding: 6px 12px; border-radius: 20px; border: 3px solid;
-            text-align: center; font-weight: 900; font-size: clamp(11px, 1.2vw, 14px); text-transform: uppercase;
-            background: #ffffff; color: #111111; flex-shrink: 0;
+            width: clamp(130px, 15vw, 190px);
+            padding: 8px 12px;
+            border-radius: 20px;
+            border-width: 3px;
+            border-style: solid;
+            text-align: center;
+            font-weight: 900;
+            font-size: clamp(12px, 1.3vw, 15px);
+            text-transform: uppercase;
+            background: #ffffff;
+            color: #111111;
+            flex-shrink: 0;
         }
         .pill-urss { border-color: #ec5d7d; }
         .pill-tecno { border-color: #7d8495; }
         .pill-scienze { border-color: #5bb3cc; }
         .pill-musica { border-color: #29b6f6; } 
         .pill-guerra { border-color: #4a6fa5; }
-        .pill-fredda { border-color: #cc0000; }
+        .pill-fredda { border-color: #cc0000; } /* Stile pilastro Guerra Fredda */
         .pill-guernica { border-color: #3b3c6e; }
-        .map-desc { font-size: clamp(12px, 1.3vw, 16px); color: #333333; font-weight: 600; }
+        .map-desc { font-size: clamp(13px, 1.4vw, 17px); color: #333333; line-height: 1.4; font-weight: 600; }
 
+        /* INTERFACCIA DI NAVIGAZIONE */
         .nav-controls { position: absolute; bottom: 5vh; right: 5vw; display: flex; gap: 15px; z-index: 10; }
         .nav-btn {
             background: #1a1a1a; border: 1px solid #333; color: #fff; width: 46px; height: 46px;
             border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s ease;
+            font-size: 16px; transition: all 0.2s ease;
         }
-        .nav-btn:hover { background: #cc0000; transform: translateY(-2px); }
-        .slide-counter { position: absolute; bottom: 6vh; left: 5vw; font-family: 'Space Mono', monospace; color: #555; z-index: 10; }
+        .nav-btn:hover { background: #cc0000; border-color: #cc0000; transform: translateY(-2px); }
+        .map-slide .nav-btn { background: #f0f0f0; border: 1px solid #ccc; color: #111; }
+        .map-slide .nav-btn:hover { background: #cc0000; border-color: #cc0000; color: #fff; }
+        .slide-counter { position: absolute; bottom: 6vh; left: 5vw; font-family: 'Space Mono', monospace; font-size: 15px; color: #555; z-index: 10; }
+
+        /* COMPONENTI GRAFICI */
+        .chart-container { width: 100%; display: flex; flex-direction: column; gap: 15px; margin-bottom: 3vh; }
+        .bar-row { display: flex; align-items: center; gap: 15px; }
+        .bar-label { width: clamp(110px, 15vw, 150px); font-weight: bold; text-align: right; font-size: clamp(12px, 1.4vw, 15px); }
+        .bar-outer { flex-grow: 1; height: 30px; background: #1a1a1a; border-radius: 4px; overflow: hidden; border: 1px solid #2d2d2d; }
+        .bar-fill { height: 100%; background: linear-gradient(90deg, #700000, #cc0000); display: flex; align-items: center; padding-left: 12px; font-weight: bold; font-size: 13px; color: #fff; }
     </style>
 </head>
 <body>
 
 <div class="presentation-wrapper">
-    <div class="slide-counter" id="counter">1 / 11</div>
+    <div class="slide-counter" id="counter">1 / 10</div>
 
     <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn"><i class="fa-solid fa-arrow-left"></i></button>
-        <button class="nav-btn" id="nextBtn"><i class="fa-solid fa-arrow-right"></i></button>
+        <button class="nav-btn" id="prevBtn" aria-label="Slide precedente"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="nav-btn" id="nextBtn" aria-label="Slide successiva"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <div class="slide active" id="slide1" style="justify-content: center; text-align: center; background: radial-gradient(circle at center, #1c0303 0%, #111111 100%);">
-        <h1>L'UNIONE <br><span>SOVIETICA</span></h1>
-        <p style="font-family: 'Space Mono', monospace; letter-spacing: 5px; margin-top: 25px; color: #666;">UN SECOLO DI POTERE, SCIENZA E ARTE</p>
-    </div>
-
-    <div class="slide map-slide" id="slide2">
-        <div class="content-area">
-            <div class="map-container">
-                <div class="map-left-title">IL MIO<br>PERCORSO</div>
-                <div class="map-center-svg">
-                    <svg width="100%" height="100%" viewBox="0 0 70 480" fill="none">
-                        <path d="M 15,30 Q 75,240 15,450" stroke="#cc0000" stroke-width="4" stroke-dasharray="6,6" fill="none" />
-                    </svg>
-                </div>
-                <div class="map-right-list">
-                    <div class="map-row"><div class="map-pill pill-urss">1. L'URSS</div><div class="map-desc">Storia e Piani Quinquennali.</div></div>
-                    <div class="map-row"><div class="map-pill pill-tecno">Tecnologia</div><div class="map-desc">Energia e Permafrost.</div></div>
-                    <div class="map-row"><div class="map-pill pill-scienze">Scienze</div><div class="map-desc">DNA e Caso Lysenko.</div></div>
-                    <div class="map-row"><div class="map-pill pill-musica">Musica</div><div class="map-desc">Dmitrij Šostakovič.</div></div>
-                    <div class="map-row"><div class="map-pill pill-guerra">G. C. Spagnola</div><div class="map-desc">L'intervento militare sovietico.</div></div>
-                    <div class="map-row"><div class="map-pill pill-guernica">Il Guernica</div><div class="map-desc">L'opera di Pablo Picasso (1937).</div></div>
-                    <div class="map-row"><div class="map-pill pill-fredda">Guerra Fredda</div><div class="map-desc">Il mondo bipolare e la Cortina di Ferro.</div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide3">
-        <h2 class="slide-title">1. L'Unione Sovietica</h2>
-        <div class="content-area">
-            <div class="two-column-clean">
-                <div class="left-content-clean">
-                    <div class="slide-quote-clean">
-                        <p class="slide-quote-text">"La pianificazione statale ha trasformato l'URSS."</p>
-                        <span class="slide-quote-author">— Stalinismo e Gulag</span>
-                    </div>
-                    <p>Sotto Stalin, l'industrializzazione forzata portò a una crescita colossale, ma a prezzo della sottomissione totale dei diritti individuali.</p>
-                </div>
-                <div class="historical-image-container cover-mode"><img src="image_e525e6.jpg" alt="Piazza Rossa"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide4">
-        <h2 class="slide-title">Tecnologia: Energia</h2>
-        <div class="content-area">
-            <div class="two-column-clean">
-                <div class="left-content-clean">
-                    <p>Sfida estrema al <strong>Permafrost siberiano</strong>: creazione di reti energetiche su piloni d'acciaio per estrarre gas e petrolio senza far crollare il terreno gelato.</p>
-                </div>
-                <div class="historical-image-container"><img src="image_e3b6a1.jpg" alt="Siberia"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide5">
-        <h2 class="slide-title">Scienze: Il DNA</h2>
-        <div class="content-area">
-            <div class="two-column-clean">
-                <div class="left-content-clean">
-                    <div class="slide-quote-clean">
-                        <p class="slide-quote-text">"La genetica classica è scienza borghese."</p>
-                        <span class="slide-quote-author">— Trofim Lysenko</span>
-                    </div>
-                    <p>Il Caso Lysenko bloccò lo studio del DNA in URSS, perseguitando i veri scienziati e causando carestie catastrofiche.</p>
-                </div>
-                <div class="historical-image-container"><img src="image_e3c0ec.png" alt="Lysenko"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide6">
-        <h2 class="slide-title">4. Musica: Šostakovič</h2>
-        <div class="content-area">
-            <div class="two-column-clean">
-                <div class="left-content-clean">
-                    <p>La sua <strong>Settima Sinfonia</strong> fu simbolo della resistenza, ma Šostakovič visse sempre nel terrore della censura del regime.</p>
-                </div>
-                <div class="historical-image-container"><img src="image_e525c7.png" alt="Šostakovič"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide7">
-        <h2 class="slide-title">Guerra Civile Spagnola</h2>
-        <div class="content-area">
-            <div class="two-column-clean">
-                <div class="left-content-clean">
-                    <p>L'URSS inviò i caccia <strong>I-16 "Mosca"</strong> a difesa della Repubblica, in una prova generale della Seconda Guerra Mondiale.</p>
-                </div>
-                <div class="historical-image-container cover-mode"><img src="image_e522de.jpg" alt="Guerra Spagnola"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide8">
-        <h2 class="slide-title">Arte: Il Guernica</h2>
-        <div class="content-area">
-            <div class="two-column-clean">
-                <div class="historical-image-container"><img src="image_e5258e.jpg" alt="Guernica"></div>
-                <ul class="list-styled">
-                    <li><i class="fa-solid fa-eye-slash"></i> <div><strong>Monocromatismo:</strong> Il grigio della morte.</div></li>
-                    <li><i class="fa-solid fa-face-frown"></i> <div><strong>Cubismo:</strong> Corpi spezzati.</div></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide9">
-        <h2 class="slide-title">Guerra Fredda: Il Bipolarismo</h2>
-        <div class="content-area">
-            <div class="two-column-clean">
-                <div class="left-content-clean">
-                    <div class="slide-quote-clean">
-                        <p class="slide-quote-text">"Una cortina di ferro è scesa sul continente."</p>
-                        <span class="slide-quote-author">— Winston Churchill</span>
-                    </div>
-                    <p>Dopo il 1945, l'URSS e gli USA si divisero il controllo globale. Inizia un'epoca di tensioni geopolitiche dominata dalla minaccia atomica e dalla corsa allo spazio.</p>
-                </div>
-                <div class="historical-image-container"><img src="image_guerra_fredda.jpg" alt="Mappa Mondo Bipolare"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide10">
-        <h2 class="slide-title">Ed. Civica: Libertà</h2>
-        <div class="content-area">
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-                <div style="background: #181818; padding: 20px; border-top: 4px solid #cc0000;">
-                    <h3>Art. 21</h3>
-                    <p>Libertà di parola contro ogni dittatura.</p>
-                </div>
-                <div style="background: #181818; padding: 20px; border-top: 4px solid #cc0000;">
-                    <h3>La Scienza</h3>
-                    <p>Indipendente dal potere politico.</p>
-                </div>
-                <div style="background: #181818; padding: 20px; border-top: 4px solid #cc0000;">
-                    <h3>Diritti</h3>
-                    <p>La vita umana ha valore assoluto.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide11" style="background: linear-gradient(135deg, #cc0000 0%, #600000 100%); justify-content: center; text-align: center;">
-        <h1 style="font-size: 80px;">GRAZIE PER L'ATTENZIONE</h1>
-    </div>
-</div>
-
-<script>
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const counter = document.getElementById('counter');
-    let currentSlideIndex = 0;
-
-    function updatePresentation() {
-        slides.forEach((slide, index) => slide.classList.toggle('active', index === currentSlideIndex));
-        counter.textContent = `${currentSlideIndex + 1} / ${slides.length}`;
-        counter.style.color = slides[currentSlideIndex].classList.contains('map-slide') ? '#666' : '#555';
-    }
-
-    nextBtn.addEventListener('click', () => { if (currentSlideIndex < slides.length - 1) { currentSlideIndex++; updatePresentation(); } });
-    prevBtn.addEventListener('click', () => { if (currentSlideIndex > 0) { currentSlideIndex--; updatePresentation(); } });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === ' ') nextBtn.click();
-        else if (e.key === 'ArrowLeft') prevBtn.click();
-    });
-    updatePresentation();
-</script>
-</body>
-</html>
+    <div class="slide active" id="slide
