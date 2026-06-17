@@ -22,7 +22,7 @@
             overflow: hidden;
         }
         
-        /* PRESENTAZIONE FLUIDA A TUTTO SCHERMO */
+        
         .presentation-wrapper {
             position: relative;
             width: 100vw;
@@ -147,11 +147,11 @@
         .historical-image-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Garantisce che la foto sia interamente visibile senza tagli */
+            object-fit: contain; 
             display: block;
         }
         .historical-image-container.cover-mode img {
-            object-fit: cover; /* Ottimale per sfondi pieni o mappe estese */
+            object-fit: cover;
         }
         .historical-image-container i {
             font-size: clamp(45px, 6vw, 75px);
@@ -191,11 +191,11 @@
         .pill-scienze { border-color: #5bb3cc; }
         .pill-musica { border-color: #29b6f6; } 
         .pill-guerra { border-color: #4a6fa5; }
-        .pill-fredda { border-color: #cc0000; } /* Stile pilastro Guerra Fredda */
+        .pill-fredda { border-color: #cc0000; } 
         .pill-guernica { border-color: #3b3c6e; }
         .map-desc { font-size: clamp(13px, 1.4vw, 17px); color: #333333; line-height: 1.4; font-weight: 600; }
 
-        /* INTERFACCIA DI NAVIGAZIONE */
+        
         .nav-controls { position: absolute; bottom: 5vh; right: 5vw; display: flex; gap: 15px; z-index: 10; }
         .nav-btn {
             background: #1a1a1a; border: 1px solid #333; color: #fff; width: 46px; height: 46px;
@@ -207,7 +207,7 @@
         .map-slide .nav-btn:hover { background: #cc0000; border-color: #cc0000; color: #fff; }
         .slide-counter { position: absolute; bottom: 6vh; left: 5vw; font-family: 'Space Mono', monospace; font-size: 15px; color: #555; z-index: 10; }
 
-        /* COMPONENTI GRAFICI */
+        
         .chart-container { width: 100%; display: flex; flex-direction: column; gap: 15px; margin-bottom: 3vh; }
         .bar-row { display: flex; align-items: center; gap: 15px; }
         .bar-label { width: clamp(110px, 15vw, 150px); font-weight: bold; text-align: right; font-size: clamp(12px, 1.4vw, 15px); }
@@ -398,7 +398,7 @@
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
     
-    /* NAVIGAZIONE DA TASTIERA DI LIVELLO PROFESSIONALE */
+    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight' || e.key === ' ') {
             e.preventDefault();
